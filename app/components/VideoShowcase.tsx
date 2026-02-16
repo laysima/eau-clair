@@ -20,7 +20,7 @@ export default function VideoShowcase() {
               muted
               playsInline
             >
-              <source src="/videos/vid1.mp4" type="video/mp4" />
+              <source src="https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/vid1.mp4" type="video/mp4" />
             </video>
           </div>
 
@@ -32,7 +32,7 @@ export default function VideoShowcase() {
               muted
               playsInline
             >
-              <source src="/videos/vid2.mp4" type="video/mp4" />
+             <source src="https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/vid2.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
