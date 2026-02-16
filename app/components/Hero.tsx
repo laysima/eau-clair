@@ -13,7 +13,7 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
-          muted={false}
+          muted={true}
           playsInline
         >
           <source src="https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/waterfall.mp4" type="video/mp4" />
