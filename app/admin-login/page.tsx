@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Mail, Lock, Shield, ArrowRight, Loader2 } from 'lucide-react'
 import { createClient } from '@/utils/supabase/client'
 
@@ -11,8 +11,6 @@ export default function AdminLoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const urlError = searchParams.get('error')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -84,9 +82,9 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Error Message */}
-        {(error || urlError) && (
+        {error && (
           <div className="bg-red-500/20 backdrop-blur-sm border border-red-300/50 text-white px-4 py-3 text-sm font-light">
-            {error || urlError}
+            {error}
           </div>
         )}
 

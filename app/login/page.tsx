@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Mail, Lock, ArrowRight, Loader2 } from 'lucide-react'
 import { createClient } from '@/utils/supabase/client'
 
@@ -11,8 +11,6 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const message = searchParams.get('message')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,13 +55,6 @@ export default function LoginPage() {
           <h1 className="text-4xl font-light text-gray-900 mb-2">Welcome Back</h1>
           <p className="text-gray-600 font-light">Sign in to your account</p>
         </div>
-
-        {/* Success Message */}
-        {message && (
-          <div className="bg-[#E8F5E9] border border-[#2E7D32] text-[#2E7D32] px-4 py-3 text-sm font-light">
-            {message}
-          </div>
-        )}
 
         {/* Error Message */}
         {error && (
