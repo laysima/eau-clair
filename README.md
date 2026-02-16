@@ -101,34 +101,3 @@ eau-clair/
 ## Environment Variables
 
 See `.env.example` for required environment variables.
-
-## Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/eau-clair)
-
-## Features To-Do
-
-- [ ] Shopping cart functionality
-- [ ] Checkout and payment integration
-- [ ] Order management
-- [ ] Customer dashboard
-- [ ] Product reviews
-- [ ] Search functionality
-- [ ] Email marketing integration
-
-## License
-
-MIT
-
-## Contact
-
-Your Name - your.email@example.com
-
-Project Link: [https://github.com/your-username/eau-clair](https://github.com/your-username/eau-clair)
