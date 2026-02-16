@@ -4,15 +4,15 @@ A modern, elegant e-commerce platform for premium natural spring water, built wi
 
 ## Features
 
-- 🎨 Beautiful, minimal design with blue/green color scheme
-- 💧 Product catalog with filtering and search
-- 🔐 User authentication (signup, login, password reset)
-- 👤 Admin dashboard for product management
-- 📧 Email notifications via Resend
-- 🖼️ Image upload to Supabase Storage
-- 📱 Fully responsive design
-- ✨ Smooth scroll animations
-- 🎥 Video backgrounds and 3D product visualization
+- Minimal design with blue/green color scheme
+- Product catalog
+- User authentication
+- Admin dashboard
+- Email notifications via Resend
+- Image upload to Supabase Storage
+- Responsive design
+- Smooth scroll animations
+- Video backgrounds and 3D product visualization
 
 ## Tech Stack
 
