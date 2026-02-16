@@ -4,15 +4,15 @@ A modern, elegant e-commerce platform for premium natural spring water, built wi
 
 ## Features
 
-- 🎨 Beautiful, minimal design with blue/green color scheme
-- 💧 Product catalog with filtering and search
-- 🔐 User authentication (signup, login, password reset)
-- 👤 Admin dashboard for product management
-- 📧 Email notifications via Resend
-- 🖼️ Image upload to Supabase Storage
-- 📱 Fully responsive design
-- ✨ Smooth scroll animations
-- 🎥 Video backgrounds and 3D product visualization
+- Minimal design with blue/green color scheme
+- Product catalog
+- User authentication
+- Admin dashboard
+- Email notifications via Resend
+- Image upload to Supabase Storage
+- Responsive design
+- Smooth scroll animations
+- Video backgrounds and 3D product visualization
 
 ## Tech Stack
 
@@ -101,34 +101,3 @@ eau-clair/
 ## Environment Variables
 
 See `.env.example` for required environment variables.
-
-## Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/eau-clair)
-
-## Features To-Do
-
-- [ ] Shopping cart functionality
-- [ ] Checkout and payment integration
-- [ ] Order management
-- [ ] Customer dashboard
-- [ ] Product reviews
-- [ ] Search functionality
-- [ ] Email marketing integration
-
-## License
-
-MIT
-
-## Contact
-
-Your Name - your.email@example.com
-
-Project Link: [https://github.com/your-username/eau-clair](https://github.com/your-username/eau-clair)
