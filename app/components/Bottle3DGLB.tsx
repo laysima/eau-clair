@@ -71,7 +71,7 @@ export default function Bottle3DGLB() {
     let model: THREE.Group
 
     loader.load(
-      '/bottle-3d.glb',
+      'https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/bottle-3d.glb',
       (gltf) => {
         model = gltf.scene
 

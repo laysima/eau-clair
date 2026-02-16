@@ -16,7 +16,7 @@ export default function Hero() {
           muted={false}
           playsInline
         >
-          <source src="/videos/waterfall.mp4" type="video/mp4" />
+          <source src="https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/waterfall.mp4" type="video/mp4" />
         </video>
         {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
