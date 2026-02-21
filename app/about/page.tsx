@@ -17,7 +17,7 @@ export default function AboutPage() {
     {
       name: "Limann Shakur",
       role: "Technical Officer",
-      image: "/founder1.jpg", // Update with your actual filename
+      image: "/founder1.JPG", // Update with your actual filename
       bio: "David's expertise in environmental science ensures our water maintains the highest purity standards while protecting natural ecosystems."
     }
   ]

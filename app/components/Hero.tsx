@@ -23,40 +23,40 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-8 py-32 w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32 w-full relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left - Text Content */}
-          <div className="space-y-8 p-12 border-l-4 border-white/80 animate-fade-in-left">
-            <div className="inline-block border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-6 py-2 text-sm font-medium tracking-widest uppercase shadow-lg">
+          <div className="space-y-6 md:space-y-8 p-6 md:p-12 border-l-4 border-white/80 animate-fade-in-left">
+            <div className="inline-block border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-4 md:px-6 py-2 text-xs md:text-sm font-medium tracking-widest uppercase shadow-lg">
               Premium Natural Water
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-light text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
               Purity<br />
               <span className="font-semibold text-[#90CAF9]">Perfected</span>
             </h1>
             
-            <p className="text-xl text-white/95 leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
+            <p className="text-base md:text-xl text-white/95 leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
               Vapor distilled water with electrolytes, sourced from nature&apos;s most pristine springs.
             </p>
             
-            <div className="flex gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4">
               <Link 
                 href="/products"
-                className="group bg-white text-[#1565C0] px-8 py-4 flex items-center gap-3 hover:bg-[#E3F2FD] transition-all shadow-xl hover:scale-105"
+                className="group bg-white text-[#1565C0] px-6 md:px-8 py-3 md:py-4 flex items-center justify-center gap-3 hover:bg-[#E3F2FD] transition-all shadow-xl hover:scale-105 text-center"
               >
                 <span className="font-medium tracking-wide">Explore Products</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               
-              <button className="border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-8 py-4 hover:bg-white/20 transition-all font-medium tracking-wide shadow-xl hover:scale-105">
+              <button className="border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 hover:bg-white/20 transition-all font-medium tracking-wide shadow-xl hover:scale-105">
                 Learn More
               </button>
             </div>
           </div>
 
-          {/* Right - 3D Rotating Bottle GLB */}
-          <div className="relative h-[700px] flex items-center justify-center animate-fade-in-right animation-delay-400">
+          {/* Right - 3D Rotating Bottle GLB (Hidden on Mobile) */}
+          <div className="hidden md:flex relative h-[700px] items-center justify-center animate-fade-in-right animation-delay-400">
             <div className="w-[450px] h-[700px]">
               <Bottle3DGLB />
             </div>
