@@ -5,6 +5,20 @@ import { ArrowRight } from 'lucide-react'
 import Bottle3DGLB from './Bottle3DGLB'
 
 export default function Hero() {
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about')
+    if (aboutSection) {
+      const navHeight = 60 // Navbar height
+      const elementPosition = aboutSection.getBoundingClientRect().top + window.scrollY
+      const offsetPosition = elementPosition - navHeight
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
@@ -48,8 +62,11 @@ export default function Hero() {
                 <span className="font-medium tracking-wide">Explore Products</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              
-              <button className="border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 hover:bg-white/20 transition-all font-medium tracking-wide shadow-xl hover:scale-105">
+
+              <button 
+                onClick={scrollToAbout}
+                className="border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 hover:bg-white/20 transition-all font-medium tracking-wide shadow-xl hover:scale-105 text-center"
+              >
                 Learn More
               </button>
             </div>
