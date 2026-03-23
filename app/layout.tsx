@@ -8,7 +8,7 @@ const encodeSans = Encode_Sans_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Eau Clair - Pure Water",
+  title: "Eau Clair",
   description: "Pure water, simplified",
 };
 
