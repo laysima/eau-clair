@@ -4,18 +4,20 @@ import VideoShowcase from './components/VideoShowcase'
 import AboutSection from './components/AboutSection'
 import WhyChooseUs from './components/WhyChooseUs'
 import ProductCatalog from './components/ProductCatalog'
-import Footer from './components/Footer'
+import HomeFooter from './components/HomeFooter'
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <VideoShowcase />
-      <AboutSection />
-      <WhyChooseUs />
-      <ProductCatalog />
-      <Footer />
+      <main>
+        <Hero />
+        <AboutSection />
+        <VideoShowcase />
+        <WhyChooseUs />
+        <ProductCatalog />
+      </main>
+      <HomeFooter />
     </>
   )
 }

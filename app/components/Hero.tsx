@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import Bottle3DGLB from './Bottle3DGLB'
+import Bottle3D from './Bottle3D'
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -75,7 +75,7 @@ export default function Hero() {
           {/* Right - 3D Rotating Bottle GLB (Hidden on Mobile) */}
           <div className="hidden md:flex relative h-[700px] items-center justify-center animate-fade-in-right animation-delay-400">
             <div className="w-[450px] h-[700px]">
-              <Bottle3DGLB />
+              <Bottle3D />
             </div>
           </div>
         </div>

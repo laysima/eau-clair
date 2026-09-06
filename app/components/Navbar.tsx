@@ -36,25 +36,6 @@ export default function Navbar() {
     return () => subscription.unsubscribe()
   }, [])
 
-  const scrollToSection = (id: string) => {
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
-      const element = document.getElementById(id)
-      if (element) {
-        const navHeight = 60
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY
-        const offsetPosition = elementPosition - navHeight
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }
-    }
-    setMobileMenuOpen(false)
-  }
-
   const handleLogout = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
@@ -123,12 +104,16 @@ export default function Navbar() {
           >
             Products
           </Link>
-          <button 
-            onClick={() => scrollToSection('contact')} 
-            className="hover:text-[#1565C0] transition-colors"
+          <Link 
+            href="/contact" 
+            className={`transition-colors ${
+              isActive('/contact') 
+                ? 'text-[#1565C0] font-medium border-b-2 border-[#1565C0] pb-1' 
+                : 'hover:text-[#1565C0]'
+            }`}
           >
             Contact
-          </button>
+          </Link>
         </div>
         
         {/* Desktop Auth */}
@@ -226,12 +211,17 @@ export default function Navbar() {
             >
               Products
             </Link>
-            <button 
-              onClick={() => scrollToSection('contact')} 
-              className="block text-left text-gray-700 hover:text-[#1565C0] transition-colors font-light text-sm tracking-wide w-full py-2"
+            <Link 
+              href="/contact" 
+              className={`block py-2 text-sm tracking-wide ${
+                isActive('/contact') 
+                  ? 'text-[#1565C0] font-medium border-l-2 border-[#1565C0] pl-3' 
+                  : 'text-gray-700 hover:text-[#1565C0] font-light'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               Contact
-            </button>
+            </Link>
             
             {!user && (
               <div className="pt-3 border-t border-gray-200 space-y-3">

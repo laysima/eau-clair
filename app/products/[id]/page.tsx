@@ -65,7 +65,7 @@ export default async function ProductDetailPage({
               {/* Product Image */}
               <div className="relative h-150 bg-gray-50">
                 <Image
-                  src={product.image_url || '/placeholder.jpg'}
+                  src={product.image_url || '/bottleNB.png'}
                   alt={product.name}
                   fill
                   className="object-contain p-12"

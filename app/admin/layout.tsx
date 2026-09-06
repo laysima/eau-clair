@@ -30,20 +30,30 @@ export default async function AdminLayout({
                 <Package className="w-5 h-5" />
                 <span>Products</span>
               </Link>
-              <Link 
-                href="/admin/orders" 
-                className="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 border-l-2 border-transparent hover:border-white/30 transition font-light text-sm tracking-wide"
+              {/* Not built yet — rendered inert so it cannot 404. */}
+              <span
+                aria-disabled="true"
+                title="Coming soon"
+                className="flex items-center gap-3 px-4 py-3 text-white/35 border-l-2 border-transparent font-light text-sm tracking-wide cursor-not-allowed"
               >
                 <ShoppingCart className="w-5 h-5" />
                 <span>Orders</span>
-              </Link>
-              <Link 
-                href="/admin/customers" 
-                className="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 border-l-2 border-transparent hover:border-white/30 transition font-light text-sm tracking-wide"
+                <span className="ml-auto text-[10px] tracking-widest uppercase border border-white/25 px-1.5 py-0.5">
+                  Soon
+                </span>
+              </span>
+              {/* Not built yet — rendered inert so it cannot 404. */}
+              <span
+                aria-disabled="true"
+                title="Coming soon"
+                className="flex items-center gap-3 px-4 py-3 text-white/35 border-l-2 border-transparent font-light text-sm tracking-wide cursor-not-allowed"
               >
                 <Users className="w-5 h-5" />
                 <span>Customers</span>
-              </Link>
+                <span className="ml-auto text-[10px] tracking-widest uppercase border border-white/25 px-1.5 py-0.5">
+                  Soon
+                </span>
+              </span>
               
               <div className="pt-8 mt-8 border-t border-white/20">
                 <Link 

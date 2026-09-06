@@ -13,7 +13,15 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [loading, setLoading] = useState(true)
   
-  const categories = ["All", "Still Water", "Sparkling", "Premium", "Bulk"]
+  /** Preferred display order; anything else a product uses is appended. */
+  const CATEGORY_ORDER = ["Still Water", "Sparkling", "Premium", "Bulk"]
+
+  const categories = ["All", ...Array.from(new Set(products.map(p => p.category).filter(Boolean)))
+    .sort((a, b) => {
+      const ia = CATEGORY_ORDER.indexOf(a as string)
+      const ib = CATEGORY_ORDER.indexOf(b as string)
+      return (ia === -1 ? CATEGORY_ORDER.length : ia) - (ib === -1 ? CATEGORY_ORDER.length : ib)
+    })]
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -68,6 +76,27 @@ export default function ProductsPage() {
         </section>
 
         {/* Filters */}
+        {categories.length > 1 && (
+          <section className="px-8 border-b border-gray-200">
+            <div className="max-w-7xl mx-auto flex flex-wrap gap-3 py-6">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category as string)}
+                  aria-pressed={selectedCategory === category}
+                  className={`px-5 py-2 text-sm tracking-wide border transition-all ${
+                    selectedCategory === category
+                      ? 'border-[#1565C0] bg-[#1565C0] text-white font-medium'
+                      : 'border-gray-300 text-gray-700 font-light hover:border-[#1565C0] hover:text-[#1565C0]'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
 
         {/* Products Grid */}
         <section className="py-24 px-8">
@@ -100,7 +129,7 @@ export default function ProductsPage() {
                       {/* Product Image */}
                       <div className="relative h-96 bg-gray-50 overflow-hidden">
                         <Image
-                          src={product.image_url || '/placeholder.jpg'}
+                          src={product.image_url || '/bottleNB.png'}
                           alt={product.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-700"
