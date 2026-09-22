@@ -12,5 +12,7 @@
 # Large media files
 public/videos/
 *.mp4
+# The optimised hero loop is small enough to ship with the site
+!public/media/**/*.mp4
 *.glb
 *.obj

@@ -4,6 +4,24 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import Bottle3D from './Bottle3D'
 
+/**
+ * Hero loop, self-hosted from public/media/hero.
+ *
+ * Cut from the original 4K, 42s, 28MB clip down to a seamless 12s loop (the
+ * shot is locked off, so a 1s crossfade hides the wrap), with the audio track
+ * dropped and the index moved to the front so playback starts while the rest
+ * is still downloading.
+ *
+ * Landscape screens get 1920x1080; portrait phones get a 720x1280 crop
+ * centred on the cascade. AV1 is listed first, with H.264 for browsers that
+ * can't decode AV1 (most iPhones). Filenames carry a content hash, so
+ * next.config.ts can cache them for a year — a re-encode gets a new name.
+ */
+const HERO_MEDIA = '/media/hero'
+
+/** Browsers that ignore `media` on video sources fall through to landscape. */
+const LANDSCAPE = '(min-width: 768px), (orientation: landscape)'
+
 export default function Hero() {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about')
@@ -24,13 +42,33 @@ export default function Hero() {
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover portrait:object-[36%_center]"
           autoPlay
           loop
-          muted={true}
+          muted
           playsInline
+          preload="auto"
+          poster={`${HERO_MEDIA}/waterfall-poster-09561bc8.webp`}
+          aria-hidden="true"
         >
-          <source src="https://mdetoprztpxewognttgd.supabase.co/storage/v1/object/public/media/waterfall.mp4" type="video/mp4" />
+          <source
+            media={LANDSCAPE}
+            src={`${HERO_MEDIA}/waterfall-1080-53379cd2.av1.mp4`}
+            type='video/mp4; codecs="av01.0.08M.08"'
+          />
+          <source
+            media={LANDSCAPE}
+            src={`${HERO_MEDIA}/waterfall-1080-ced07989.mp4`}
+            type='video/mp4; codecs="avc1.640028"'
+          />
+          <source
+            src={`${HERO_MEDIA}/waterfall-portrait-3ce48209.av1.mp4`}
+            type='video/mp4; codecs="av01.0.05M.08"'
+          />
+          <source
+            src={`${HERO_MEDIA}/waterfall-portrait-50fe98b0.mp4`}
+            type='video/mp4; codecs="avc1.64001f"'
+          />
         </video>
         {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>

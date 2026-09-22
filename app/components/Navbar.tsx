@@ -61,14 +61,15 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        {/* Contain the PNG's transparent padding without shrinking the logo. */}
+        <Link href="/" className="relative block h-10 w-[100px] flex-shrink-0 overflow-hidden">
           <Image 
             src="/logo.png" 
             alt="Eau Clair" 
-            width={100} 
-            height={40}
-            className="transition-all duration-300"
+            width={1280}
+            height={1028}
+            unoptimized
+            className="absolute top-1/2 h-auto w-full -translate-y-1/2"
           />
         </Link>
         
