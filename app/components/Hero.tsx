@@ -1,120 +1,85 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import Bottle3D from './Bottle3D'
 
 /**
- * Hero loop, self-hosted from public/media/hero.
+ * The hero is a single lifestyle still.
  *
- * Cut from the original 4K, 42s, 28MB clip down to a seamless 12s loop (the
- * shot is locked off, so a 1s crossfade hides the wrap), with the audio track
- * dropped and the index moved to the front so playback starts while the rest
- * is still downloading.
+ * The subject sits on the right of the frame and the left is soft, bright
+ * background — so the copy goes left, set in navy rather than white, over a
+ * light scrim that lifts the type off the photo without killing its airiness.
+ * On phones the frame is pushed right to keep the subject in shot and the
+ * scrim runs bottom-up instead.
  *
- * Landscape screens get 1920x1080; portrait phones get a 720x1280 crop
- * centred on the cascade. AV1 is listed first, with H.264 for browsers that
- * can't decode AV1 (most iPhones). Filenames carry a content hash, so
- * next.config.ts can cache them for a year — a re-encode gets a new name.
+ * next/image serves this as WebP/AVIF at the size actually needed; the source
+ * is a 1.4MB PNG and should never reach a visitor in that form.
  */
-const HERO_MEDIA = '/media/hero'
-
-/** Browsers that ignore `media` on video sources fall through to landscape. */
-const LANDSCAPE = '(min-width: 768px), (orientation: landscape)'
-
 export default function Hero() {
   const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about')
-    if (aboutSection) {
-      const navHeight = 60 // Navbar height
-      const elementPosition = aboutSection.getBoundingClientRect().top + window.scrollY
-      const offsetPosition = elementPosition - navHeight
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+    const about = document.getElementById('about')
+    if (!about) return
+    const navHeight = 60
+    window.scrollTo({
+      top: about.getBoundingClientRect().top + window.scrollY - navHeight,
+      behavior: 'smooth',
+    })
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background */}
+    <section id="home" className="relative flex min-h-screen items-end overflow-hidden md:items-center">
       <div className="absolute inset-0 z-0">
-        <video
-          className="absolute inset-0 w-full h-full object-cover portrait:object-[36%_center]"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster={`${HERO_MEDIA}/waterfall-poster-09561bc8.webp`}
+        <Image
+          src="/Gemini 3.1.png"
+          alt="A runner drinking Eau Clair water by a poolside at golden hour"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[72%_center] md:object-center"
+        />
+
+        {/* Light scrim: sideways on desktop where the copy sits left, bottom-up
+            on phones where it stacks under the subject. */}
+        <div
           aria-hidden="true"
-        >
-          <source
-            media={LANDSCAPE}
-            src={`${HERO_MEDIA}/waterfall-1080-53379cd2.av1.mp4`}
-            type='video/mp4; codecs="av01.0.08M.08"'
-          />
-          <source
-            media={LANDSCAPE}
-            src={`${HERO_MEDIA}/waterfall-1080-ced07989.mp4`}
-            type='video/mp4; codecs="avc1.640028"'
-          />
-          <source
-            src={`${HERO_MEDIA}/waterfall-portrait-3ce48209.av1.mp4`}
-            type='video/mp4; codecs="av01.0.05M.08"'
-          />
-          <source
-            src={`${HERO_MEDIA}/waterfall-portrait-50fe98b0.mp4`}
-            type='video/mp4; codecs="avc1.64001f"'
-          />
-        </video>
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
+          className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/10 md:bg-gradient-to-r md:from-white/90 md:via-white/55 md:to-transparent"
+        />
       </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32 w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-          {/* Left - Text Content */}
-          <div className="space-y-6 md:space-y-8 p-6 md:p-12 border-l-4 border-white/80 animate-fade-in-left">
-            <div className="inline-block border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-4 md:px-6 py-2 text-xs md:text-sm font-medium tracking-widest uppercase shadow-lg">
-              Premium Natural Water
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              Purity<br />
-              <span className="font-semibold text-[#90CAF9]">Perfected</span>
-            </h1>
-            
-            <p className="text-base md:text-xl text-white/95 leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
-              Vapor distilled water with electrolytes, sourced from nature&apos;s most pristine springs.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4">
-              <Link 
-                href="/products"
-                className="group bg-white text-[#1565C0] px-6 md:px-8 py-3 md:py-4 flex items-center justify-center gap-3 hover:bg-[#E3F2FD] transition-all shadow-xl hover:scale-105 text-center"
-              >
-                <span className="font-medium tracking-wide">Explore Products</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 md:px-8 md:py-32">
+        <div className="max-w-xl space-y-6 md:space-y-8 animate-fade-in-left">
+          <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-[#1565C0] md:text-sm">
+            <span aria-hidden="true" className="h-px w-8 bg-[#1565C0]" />
+            Premium Natural Water
+          </p>
 
-              <button 
-                onClick={scrollToAbout}
-                className="border-2 border-white/90 bg-white/10 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 hover:bg-white/20 transition-all font-medium tracking-wide shadow-xl hover:scale-105 text-center"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
+          <h1 className="text-5xl font-light leading-[1.05] tracking-tight text-[#04182f] md:text-7xl lg:text-8xl">
+            Purity
+            <br />
+            <span className="font-medium text-[#1565C0]">Perfected</span>
+          </h1>
 
-          {/* Right - 3D Rotating Bottle GLB (Hidden on Mobile) */}
-          <div className="hidden md:flex relative h-[700px] items-center justify-center animate-fade-in-right animation-delay-400">
-            <div className="w-[450px] h-[700px]">
-              <Bottle3D />
-            </div>
+          <p className="max-w-md text-lg font-light leading-relaxed text-slate-700 md:text-xl">
+            Vapour distilled water with electrolytes, for the moment you have earned it.
+          </p>
+
+          <div className="flex flex-col gap-4 pt-2 sm:flex-row md:gap-5">
+            <Link
+              href="/products"
+              className="group flex min-h-12 items-center justify-center gap-3 bg-[#1565C0] px-8 py-4 font-medium tracking-wide text-white shadow-lg transition-all hover:bg-[#0D47A1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1565C0]"
+            >
+              Explore Products
+              <ArrowRight aria-hidden="true" className="h-5 w-5 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
+            </Link>
+
+            <button
+              type="button"
+              onClick={scrollToAbout}
+              className="min-h-12 border-2 border-[#04182f]/25 bg-white/60 px-8 py-4 font-medium tracking-wide text-[#04182f] backdrop-blur-sm transition-all hover:border-[#04182f]/60 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1565C0]"
+            >
+              Learn More
+            </button>
           </div>
         </div>
       </div>

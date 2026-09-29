@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import BottleShowcase from './components/BottleShowcase'
 import VideoShowcase from './components/VideoShowcase'
 import AboutSection from './components/AboutSection'
 import WhyChooseUs from './components/WhyChooseUs'
@@ -12,10 +13,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <BottleShowcase />
         <AboutSection />
         <VideoShowcase />
-        <WhyChooseUs />
         <ProductCatalog />
+        <WhyChooseUs />
       </main>
       <HomeFooter />
     </>

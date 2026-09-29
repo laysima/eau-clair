@@ -101,7 +101,8 @@ export default function VideoShowcase() {
         </div>
       </div>
 
-      <WaveDivider fill="#04182f" />
+      {/* The collection below starts pale blue; pour it up into the film */}
+      <WaveDivider fill="#E3F2FD" />
     </section>
   )
 }
