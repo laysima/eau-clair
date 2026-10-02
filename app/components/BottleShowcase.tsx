@@ -397,7 +397,7 @@ export default function BottleShowcase() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden bg-[#04182f] bg-gradient-to-b from-[#04182f] via-[#062744] to-[#04182f] pt-24 md:pt-32 pb-28 md:pb-36">
+    <section data-nav-theme="dark" className="relative overflow-hidden bg-[#04182f] bg-gradient-to-b from-[#04182f] via-[#062744] to-[#04182f] pt-24 md:pt-32 pb-28 md:pb-36">
       {/* Light pooling behind the stage */}
       <div aria-hidden="true" className="absolute inset-0">
         <div className="absolute left-1/2 top-1/3 h-[46rem] w-[46rem] -translate-x-1/2 rounded-full bg-[#1565C0]/30 blur-[140px]" />

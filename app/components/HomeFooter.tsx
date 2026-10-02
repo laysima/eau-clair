@@ -5,7 +5,7 @@ import WaveDivider from './WaveDivider'
 
 export default function HomeFooter() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-[#04182f] px-6 pb-8 pt-24 text-white md:px-8 md:pt-32">
+    <footer id="contact" data-nav-theme="dark" className="relative overflow-hidden bg-[#04182f] px-6 pb-8 pt-24 text-white md:px-8 md:pt-32">
       {/* Why Choose Us ends on #CFE6F5 — the pale surface spilling down into the deep */}
       <WaveDivider position="top" fill="#CFE6F5" height="h-12 md:h-20" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-56 -top-32 h-[42rem] w-[42rem] rounded-full border border-[#90CAF9]/10" />

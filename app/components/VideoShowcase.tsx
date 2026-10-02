@@ -27,7 +27,7 @@ export default function VideoShowcase() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="relative flex items-center overflow-hidden min-h-[42rem] md:min-h-[46rem]">
+    <section data-nav-theme="dark" className="relative flex items-center overflow-hidden min-h-[42rem] md:min-h-[46rem]">
       {/* The film is the background — no colour wash over it. The slight scale
           crops the watermark out of the corner. */}
       <div aria-hidden="true" className="absolute inset-0 bg-black">

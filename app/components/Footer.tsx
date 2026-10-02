@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative bg-linear-to-b from-[#1565C0] to-[#0D47A1]">
+    <footer id="contact" data-nav-theme="dark" className="relative bg-linear-to-b from-[#1565C0] to-[#0D47A1]">
       {/* Wavy Blue Top */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
         <svg 

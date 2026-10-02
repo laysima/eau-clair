@@ -3,19 +3,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import WaveDivider from './WaveDivider'
+
+import heroPhoto from '../../public/Gemini 3.1.png'
 
 /**
- * The hero is a single lifestyle still.
- *
- * The subject sits on the right of the frame and the left is soft, bright
- * background — so the copy goes left, set in navy rather than white, over a
- * light scrim that lifts the type off the photo without killing its airiness.
- * On phones the frame is pushed right to keep the subject in shot and the
- * scrim runs bottom-up instead.
- *
- * next/image serves this as WebP/AVIF at the size actually needed; the source
- * is a 1.4MB PNG and should never reach a visitor in that form.
+ * The copy sits on the left of the frame, over a mid-tone grey-green slope that
+ * nothing reads well against. Rather than a flat white wash (which turns green
+ * grey) or glows around the letters (which look stuck on), the left side fades
+ * into a pale haze tinted from the photo's own sky — the way distant slopes
+ * already look in mountain light. The bottles on the right are left untouched.
  */
+const HAZE = '#EAF3FB'
+
 export default function Hero() {
   const scrollToAbout = () => {
     const about = document.getElementById('about')
@@ -28,46 +28,55 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="relative flex min-h-screen items-end overflow-hidden md:items-center">
-      <div className="absolute inset-0 z-0">
+    // The photo runs up underneath the transparent navbar at every size.
+    <section id="home" className="relative bg-white">
+      <div className="relative h-[23rem] w-full sm:h-[30rem] lg:h-auto lg:aspect-[1376/768]">
         <Image
-          src="/Gemini 3.1.png"
-          alt="A runner drinking Eau Clair water by a poolside at golden hour"
+          src={heroPhoto}
+          alt="The Eau Clair range, from a small bottle up to a large jug, on a rock in front of snow-capped mountains"
           fill
           priority
+          quality={95}
           sizes="100vw"
-          className="object-cover object-[72%_center] md:object-center"
+          className="object-cover object-[92%_center] lg:object-center"
         />
 
-        {/* Light scrim: sideways on desktop where the copy sits left, bottom-up
-            on phones where it stacks under the subject. */}
+        {/* Desktop: atmospheric haze behind the copy, clear by mid-frame */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/10 md:bg-gradient-to-r md:from-white/90 md:via-white/55 md:to-transparent"
+          className="absolute inset-0 hidden lg:block"
+          style={{
+            background: `linear-gradient(90deg, ${HAZE}e6 0%, ${HAZE}b3 28%, ${HAZE}40 48%, transparent 62%)`,
+          }}
+        />
+        {/* Phones: the rock under the bottles dissolves into the white the copy sits on */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-white via-white/60 to-transparent lg:hidden"
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 md:px-8 md:py-32">
-        <div className="max-w-xl space-y-6 md:space-y-8 animate-fade-in-left">
-          <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-[#1565C0] md:text-sm">
+      <div className="relative z-10 mx-auto -mt-6 w-full max-w-7xl px-6 pb-28 md:px-8 md:pb-32 lg:absolute lg:inset-0 lg:mt-0 lg:flex lg:items-center lg:py-0 lg:pt-16">
+        <div className="max-w-xl space-y-5 animate-fade-in-left md:space-y-6 xl:space-y-8">
+          <p className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#1565C0] md:text-sm">
             <span aria-hidden="true" className="h-px w-8 bg-[#1565C0]" />
             Premium Natural Water
           </p>
 
-          <h1 className="text-5xl font-light leading-[1.05] tracking-tight text-[#04182f] md:text-7xl lg:text-8xl">
+          <h1 className="text-[2.9rem] leading-[1.05] text-[#04182f] md:text-6xl lg:text-7xl xl:text-8xl">
             Purity
             <br />
             <span className="font-medium text-[#1565C0]">Perfected</span>
           </h1>
 
-          <p className="max-w-md text-lg font-light leading-relaxed text-slate-700 md:text-xl">
+          <p className="max-w-md text-base leading-relaxed text-[#04182f]/85 sm:text-lg md:text-xl">
             Vapour distilled water with electrolytes, for the moment you have earned it.
           </p>
 
-          <div className="flex flex-col gap-4 pt-2 sm:flex-row md:gap-5">
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 pt-2 lg:gap-5">
             <Link
               href="/products"
-              className="group flex min-h-12 items-center justify-center gap-3 bg-[#1565C0] px-8 py-4 font-medium tracking-wide text-white shadow-lg transition-all hover:bg-[#0D47A1] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1565C0]"
+              className="group flex min-h-12 items-center justify-center gap-3 bg-[#1565C0] px-7 py-4 lg:px-8 font-medium tracking-wide text-white focus-visible:outline-[#1565C0]"
             >
               Explore Products
               <ArrowRight aria-hidden="true" className="h-5 w-5 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
@@ -76,13 +85,15 @@ export default function Hero() {
             <button
               type="button"
               onClick={scrollToAbout}
-              className="min-h-12 border-2 border-[#04182f]/25 bg-white/60 px-8 py-4 font-medium tracking-wide text-[#04182f] backdrop-blur-sm transition-all hover:border-[#04182f]/60 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1565C0]"
+              className="min-h-12 border-b border-[#04182f]/30 font-medium tracking-wide text-[#04182f] transition-colors hover:border-[#04182f] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1565C0]"
             >
               Learn More
             </button>
           </div>
         </div>
       </div>
+
+      <WaveDivider fill="#04182f" height="h-12 md:h-16 lg:h-20" />
     </section>
   )
 }

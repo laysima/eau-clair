@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     ]
   },
   images: {
+    // 75 is Next's default; 95 is allowed for the hero, which fills the screen
+    // and shows compression far more than a card-sized image does.
+    qualities: [75, 95],
     remotePatterns: [
       {
         protocol: 'https',
